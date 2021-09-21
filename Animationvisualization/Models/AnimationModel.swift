@@ -12,28 +12,22 @@ struct AnimationModel {
     let delay: Double
     let force: Double
     
-    static func generateAnimations() -> [AnimationModel] {
-        let maxCase = Preset.allCases.count > Curve.allCases.count ?
-            Preset.allCases.count :
-            Curve.allCases.count
+    static func randomAnimation() -> AnimationModel {
+        let preset = Preset.allCases.randomElement()
+        let curve = Curve.allCases.randomElement()
+        let duration = Double.random(in: 0.5...2)
+        let delay = Double.random(in: 0.35...1)
+        let force = Double.random(in: 0.5...1.5)
         
-        var animations: [AnimationModel] = []
-        for _ in 1...maxCase {
-            let preset = Preset.allCases.randomElement()
-            let curve = Curve.allCases.randomElement()
-            let duration = Double.random(in: 0.5...2)
-            let delay = Double.random(in: 0.35...1)
-            let force = Double.random(in: 0.5...1.5)
-            let animation = AnimationModel(
-                preset: preset ?? .fadeIn,
-                curve: curve ?? .easeInOut,
-                duration: duration,
-                delay: delay,
-                force: force)
-            animations.append(animation)
-        }
+        let animation = AnimationModel(
+            preset: preset ?? .fadeIn,
+            curve: curve ?? .easeInOut,
+            duration: duration,
+            delay: delay,
+            force: force
+        )
         
-        return animations
+        return animation
     }
 }
 

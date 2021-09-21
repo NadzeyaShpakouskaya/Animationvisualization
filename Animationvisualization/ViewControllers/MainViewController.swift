@@ -16,41 +16,26 @@ class MainViewController: UIViewController {
     @IBOutlet weak var forceLabel: UILabel!
     
     @IBOutlet weak var animatingView: SpringView!
-
+    
     // MARK: - Private properties
-    private var indexOfCurrentAnimation = 0
-    private let animations = DataManager.shared.fetchData()
+    private var currentAnimation = AnimationModel.randomAnimation()
     
     // MARK: - Override methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let animations = animations else { return }
-        let animation = animations[indexOfCurrentAnimation]
-        setUpLabelsForAnimationWith(animation: animation)
+        setUpLabelsForAnimationWith(animation: currentAnimation)
     }
     
     // MARK: - IBActions
     @IBAction func animationButtonPressed(_ sender: SpringButton) {
-        guard let animation = animations?[indexOfCurrentAnimation], let count = animations?.count else {return}
-        animatingView.animation = animation.preset.rawValue
-        animatingView.curve = animation.curve.rawValue
-        animatingView.duration = CGFloat(animation.duration)
-        animatingView.delay = CGFloat(animation.delay)
-        animatingView.force = CGFloat(animation.force)
-        animatingView.animate()
+        setUpLabelsForAnimationWith(animation: currentAnimation)
+        animate(springView: animatingView, with: currentAnimation)
         
-        setUpLabelsForAnimationWith(animation: animation)
+        currentAnimation = AnimationModel.randomAnimation()
         
-        if indexOfCurrentAnimation == count - 1 {
-            indexOfCurrentAnimation = 0
-        } else {
-            indexOfCurrentAnimation += 1
-        }
-
-        let title = "Run \(animations?[indexOfCurrentAnimation].preset.rawValue ?? "animation")"
-        sender.setTitle(title, for: .normal)
+        setTitleFor(springButton: sender, as: currentAnimation.preset.rawValue)
     }
-
+    
     // MARK: - Private methods
     private func setUpLabelsForAnimationWith(animation: AnimationModel) {
         presetLabel.text = "Preset: \(animation.preset.rawValue)"
@@ -58,6 +43,20 @@ class MainViewController: UIViewController {
         durationLabel.text = "Duration: \(String(format:"%.2f", animation.duration))"
         delayLabel.text = "Delay: \(String(format:"%.2f", animation.delay))"
         forceLabel.text = "Force: \(String(format:"%.2f", animation.force))"
+    }
+    
+    private func animate(springView: SpringView, with animation: AnimationModel) {
+        springView.animation = animation.preset.rawValue
+        springView.curve = animation.curve.rawValue
+        springView.duration = CGFloat(animation.duration)
+        springView.delay = CGFloat(animation.delay)
+        springView.force = CGFloat(animation.force)
+        springView.animate()
+    }
+    
+    private func setTitleFor(springButton: SpringButton, as value: String ) {
+        let title = "Run \(value)"
+        springButton.setTitle(title, for: .normal)
     }
 }
 
