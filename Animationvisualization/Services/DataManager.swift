@@ -14,7 +14,7 @@ class DataManager {
     private init() {}
     
     // MARK: - Public methods
-    func fetchData() -> [AnimationModel] {
-        AnimationModel.generateAnimations(counts: 25)
+    func fetchData() -> [AnimationModel]? {
+        AnimationModel.generateAnimations()
     }
 }

@@ -12,9 +12,13 @@ struct AnimationModel {
     let delay: Double
     let force: Double
     
-    static func generateAnimations(counts: Int) -> [AnimationModel] {
+    static func generateAnimations() -> [AnimationModel] {
+        let maxCase = Preset.allCases.count > Curve.allCases.count ?
+            Preset.allCases.count :
+            Curve.allCases.count
+        
         var animations: [AnimationModel] = []
-        for _ in 1...counts {
+        for _ in 1...maxCase {
             let preset = Preset.allCases.randomElement()
             let curve = Curve.allCases.randomElement()
             let duration = Double.random(in: 0.5...2)

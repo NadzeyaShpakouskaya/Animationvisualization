@@ -76,7 +76,8 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="pyE-rU-4Bm"/>
                                 </constraints>
-                                <state key="normal" title="Button">
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Run Animation">
                                     <color key="titleColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -84,6 +85,9 @@
                                         <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="animationButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xea-2G-O0J"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -96,6 +100,14 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="b3m-f7-jPR" secondAttribute="trailing" constant="30" id="xFI-Vf-wdm"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="curveLabel" destination="kND-e5-1AK" id="he1-zx-uEH"/>
+                        <outlet property="delayLabel" destination="jh1-lW-veS" id="Sye-qg-ch3"/>
+                        <outlet property="durationLabel" destination="ji8-dj-MKu" id="f2Z-2k-diU"/>
+                        <outlet property="forceLabel" destination="z5M-8C-gd5" id="5cn-tk-z2V"/>
+                        <outlet property="presetLabel" destination="p1Q-eO-4KY" id="FDK-LQ-fuV"/>
+                        <outlet property="runAnimationButon" destination="b3m-f7-jPR" id="8BP-wJ-18W"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
