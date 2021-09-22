@@ -18,26 +18,26 @@ class MainViewController: UIViewController {
     @IBOutlet weak var animatingView: SpringView!
     
     // MARK: - Private properties
-    private var currentAnimation = AnimationModel.randomAnimation()
+    private var currentAnimation = Animation.randomAnimation()
     
     // MARK: - Override methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpLabelsForAnimationWith(animation: currentAnimation)
+        setUpTitlesForLabelsWith(currentAnimation)
     }
     
     // MARK: - IBActions
     @IBAction func animationButtonPressed(_ sender: SpringButton) {
-        setUpLabelsForAnimationWith(animation: currentAnimation)
-        animate(springView: animatingView, with: currentAnimation)
+        setUpTitlesForLabelsWith(currentAnimation)
+        animate(animatingView, with: currentAnimation)
         
-        currentAnimation = AnimationModel.randomAnimation()
+        currentAnimation = Animation.randomAnimation()
         
         setTitleFor(springButton: sender, as: currentAnimation.preset.rawValue)
     }
     
     // MARK: - Private methods
-    private func setUpLabelsForAnimationWith(animation: AnimationModel) {
+    private func setUpTitlesForLabelsWith(_ animation: Animation) {
         presetLabel.text = "Preset: \(animation.preset.rawValue)"
         curveLabel.text = "Curve: \(animation.curve.rawValue)"
         durationLabel.text = "Duration: \(String(format:"%.2f", animation.duration))"
@@ -45,7 +45,7 @@ class MainViewController: UIViewController {
         forceLabel.text = "Force: \(String(format:"%.2f", animation.force))"
     }
     
-    private func animate(springView: SpringView, with animation: AnimationModel) {
+    private func animate(_ springView: SpringView, with animation: Animation) {
         springView.animation = animation.preset.rawValue
         springView.curve = animation.curve.rawValue
         springView.duration = CGFloat(animation.duration)

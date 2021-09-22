@@ -1,5 +1,5 @@
 PODS:
-  - Spring (1.0.6)
+  - Spring (1.0.9)
 
 DEPENDENCIES:
   - Spring (from `https://github.com/LexDeBash/Spring.git`)
@@ -10,12 +10,12 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Spring:
-    :commit: 05fa00fbbec7167ab1d333ced8b22871a9c179c5
+    :commit: 053e7d2ba3106aaebbbc29c6c27075dcc8dbef92
     :git: https://github.com/LexDeBash/Spring.git
 
 SPEC CHECKSUMS:
-  Spring: 3d113f14575ef79aec9c5f906dfa4f5001c03254
+  Spring: 3e8b7d144afa52f26cf1ddba349812388de6ceb7
 
-PODFILE CHECKSUM: 77b4d41f375e18869ec9aa2435531bdc46493fa9
+PODFILE CHECKSUM: fdddf768b54656ad5ef69c3a9a8bc817e49b0f1c
 
 COCOAPODS: 1.9.3

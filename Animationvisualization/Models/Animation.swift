@@ -5,21 +5,21 @@
 //  Created by Nadzeya Shpakouskaya on 21/09/2021.
 //
 
-struct AnimationModel {
+struct Animation {
     let preset: Preset
     let curve: Curve
     let duration: Double
     let delay: Double
     let force: Double
     
-    static func randomAnimation() -> AnimationModel {
+    static func randomAnimation() -> Animation {
         let preset = Preset.allCases.randomElement()
         let curve = Curve.allCases.randomElement()
         let duration = Double.random(in: 0.5...2)
         let delay = Double.random(in: 0.35...1)
         let force = Double.random(in: 0.5...1.5)
         
-        let animation = AnimationModel(
+        let animation = Animation(
             preset: preset ?? .fadeIn,
             curve: curve ?? .easeInOut,
             duration: duration,
