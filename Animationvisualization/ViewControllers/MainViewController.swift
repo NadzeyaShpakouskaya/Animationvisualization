@@ -33,21 +33,21 @@ class MainViewController: UIViewController {
         
         currentAnimation = Animation.randomAnimation()
         
-        setTitleFor(springButton: sender, as: currentAnimation.preset.rawValue)
+        setTitleFor(springButton: sender, as: currentAnimation.preset)
     }
     
     // MARK: - Private methods
     private func setUpTitlesForLabelsWith(_ animation: Animation) {
-        presetLabel.text = "Preset: \(animation.preset.rawValue)"
-        curveLabel.text = "Curve: \(animation.curve.rawValue)"
+        presetLabel.text = "Preset: \(animation.preset)"
+        curveLabel.text = "Curve: \(animation.curve)"
         durationLabel.text = "Duration: \(String(format:"%.2f", animation.duration))"
         delayLabel.text = "Delay: \(String(format:"%.2f", animation.delay))"
         forceLabel.text = "Force: \(String(format:"%.2f", animation.force))"
     }
     
     private func animate(_ springView: SpringView, with animation: Animation) {
-        springView.animation = animation.preset.rawValue
-        springView.curve = animation.curve.rawValue
+        springView.animation = animation.preset
+        springView.curve = animation.curve
         springView.duration = CGFloat(animation.duration)
         springView.delay = CGFloat(animation.delay)
         springView.force = CGFloat(animation.force)

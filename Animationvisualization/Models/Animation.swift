@@ -6,8 +6,8 @@
 //
 
 struct Animation {
-    let preset: Preset
-    let curve: Curve
+    let preset: String
+    let curve: String
     let duration: Double
     let delay: Double
     let force: Double
@@ -20,8 +20,8 @@ struct Animation {
         let force = Double.random(in: 0.5...1.5)
         
         let animation = Animation(
-            preset: preset ?? .fadeIn,
-            curve: curve ?? .easeInOut,
+            preset: preset?.rawValue ?? "slideLeft",
+            curve: curve?.rawValue ?? "easeIn",
             duration: duration,
             delay: delay,
             force: force
@@ -31,6 +31,7 @@ struct Animation {
     }
 }
 
+// We use the same cases as Spring framework for presets and curves
 enum Preset: String, CaseIterable {
     case slideLeft
     case slideRight
