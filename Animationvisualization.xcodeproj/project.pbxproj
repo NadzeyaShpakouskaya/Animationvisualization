@@ -102,7 +102,6 @@
 			isa = PBXGroup;
 			children = (
 				FD1D5F0526F9BC560060C42E /* Animation.swift */,
-				FDD8A0B726FC3F18009B05E8 /* DataManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -128,6 +127,7 @@
 		FD7E977326F9B43D00751A18 /* Animationvisualization */ = {
 			isa = PBXGroup;
 			children = (
+				FDD8A0B926FC518F009B05E8 /* Services */,
 				FD1D5F0726F9BC5F0060C42E /* Models */,
 				FD1D5F0226F9BBAD0060C42E /* App */,
 				FD1D5F0326F9BBEC0060C42E /* ViewControllers */,
@@ -135,6 +135,14 @@
 				FD1D5F0426F9BC320060C42E /* Resources */,
 			);
 			path = Animationvisualization;
+			sourceTree = "<group>";
+		};
+		FDD8A0B926FC518F009B05E8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				FDD8A0B726FC3F18009B05E8 /* DataManager.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
