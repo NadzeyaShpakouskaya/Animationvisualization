@@ -12,84 +12,27 @@ struct Animation {
     let delay: Double
     let force: Double
     
+    var description: String {
+        """
+        Preset: \(preset)
+        Curve: \(curve)
+        Duration: \(String(format:"%.2f", duration))
+        Delay: \(String(format:"%.2f", delay))
+        Force: \(String(format:"%.2f", force))
+        """
+    }
+    
     static func randomAnimation() -> Animation {
-        let preset = Preset.allCases.randomElement()
-        let curve = Curve.allCases.randomElement()
-        let duration = Double.random(in: 0.5...2)
-        let delay = Double.random(in: 0.35...1)
-        let force = Double.random(in: 0.5...1.5)
-        
+        let dataManager = DataManager.shared
         let animation = Animation(
-            preset: preset?.rawValue ?? "slideLeft",
-            curve: curve?.rawValue ?? "easeIn",
-            duration: duration,
-            delay: delay,
-            force: force
+            preset: dataManager.provideSpringPresets().randomElement() ?? "slideLeft",
+            curve: dataManager.provideSpringCurves().randomElement() ?? "easeIn",
+            duration: Double.random(in: 0.5...2),
+            delay: Double.random(in: 0.35...1),
+            force: Double.random(in: 0.5...1.5)
         )
         
         return animation
     }
 }
 
-// We use the same cases as Spring framework for presets and curves
-enum Preset: String, CaseIterable {
-    case slideLeft
-    case slideRight
-    case slideDown
-    case slideUp
-    case squeezeLeft
-    case squeezeRight
-    case squeezeDown
-    case squeezeUp
-    case fadeIn
-    case fadeOut
-    case fadeOutIn
-    case fadeInLeft
-    case fadeInRight
-    case fadeInDown
-    case fadeInUp
-    case zoomIn
-    case zoomOut
-    case fall
-    case shake
-    case pop
-    case flipX
-    case flipY
-    case morph
-    case squeeze
-    case flash
-    case wobble
-    case swing
-}
-
-enum Curve: String, CaseIterable {
-    case easeIn
-    case easeOut
-    case easeInOut
-    case linear
-    case spring
-    case easeInSine
-    case easeOutSine
-    case easeInOutSine
-    case easeInQuad
-    case easeOutQuad
-    case easeInOutQuad
-    case easeInCubic
-    case easeOutCubic
-    case easeInOutCubic
-    case easeInQuart
-    case easeOutQuart
-    case easeInOutQuart
-    case easeInQuint
-    case easeOutQuint
-    case easeInOutQuint
-    case easeInExpo
-    case easeOutExpo
-    case easeInOutExpo
-    case easeInCirc
-    case easeOutCirc
-    case easeInOutCirc
-    case easeInBack
-    case easeOutBack
-    case easeInOutBack
-}

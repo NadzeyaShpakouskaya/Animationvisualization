@@ -10,10 +10,6 @@ import Spring
 class MainViewController: UIViewController {
     // MARK: - IBOutlets
     @IBOutlet weak var presetLabel: UILabel!
-    @IBOutlet weak var curveLabel: UILabel!
-    @IBOutlet weak var durationLabel: UILabel!
-    @IBOutlet weak var delayLabel: UILabel!
-    @IBOutlet weak var forceLabel: UILabel!
     
     @IBOutlet weak var animatingView: SpringView!
     
@@ -23,12 +19,12 @@ class MainViewController: UIViewController {
     // MARK: - Override methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpTitlesForLabelsWith(currentAnimation)
+        setUpLabelWith(currentAnimation)
     }
     
     // MARK: - IBActions
     @IBAction func animationButtonPressed(_ sender: SpringButton) {
-        setUpTitlesForLabelsWith(currentAnimation)
+        setUpLabelWith(currentAnimation)
         animate(animatingView, with: currentAnimation)
         
         currentAnimation = Animation.randomAnimation()
@@ -37,12 +33,8 @@ class MainViewController: UIViewController {
     }
     
     // MARK: - Private methods
-    private func setUpTitlesForLabelsWith(_ animation: Animation) {
-        presetLabel.text = "Preset: \(animation.preset)"
-        curveLabel.text = "Curve: \(animation.curve)"
-        durationLabel.text = "Duration: \(String(format:"%.2f", animation.duration))"
-        delayLabel.text = "Delay: \(String(format:"%.2f", animation.delay))"
-        forceLabel.text = "Force: \(String(format:"%.2f", animation.force))"
+    private func setUpLabelWith(_ animation: Animation) {
+        presetLabel.text = animation.description
     }
     
     private func animate(_ springView: SpringView, with animation: Animation) {
